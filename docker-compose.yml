@@ -1,0 +1,20 @@
+services:
+  app:
+    image: pkmombasa/47-cities:latest
+    build: .
+    container_name: 47-cities
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - DB_PATH=/app/data/47cities.db
+      - ENABLE_DEV_INBOX=true
+    volumes:
+      - fortyseven_data:/app/data
+      - fortyseven_uploads:/app/uploads
+    restart: unless-stopped
+
+volumes:
+  fortyseven_data:
+  fortyseven_uploads:
