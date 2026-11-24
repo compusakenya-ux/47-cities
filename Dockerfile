@@ -13,13 +13,13 @@ RUN npm run build
 FROM node:24-alpine AS runtime
 WORKDIR /app
 
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev && npm install -g tsx
+
 ENV NODE_ENV=production
 ENV PORT=3001
 ENV DB_PATH=/app/data/47cities.db
 ENV ENABLE_DEV_INBOX=true
-
-COPY package.json package-lock.json ./
-RUN npm ci --omit=dev && npm install --no-save tsx
 
 COPY --from=builder /app/dist ./dist
 COPY server ./server
@@ -32,4 +32,4 @@ EXPOSE 3001
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
   CMD wget -qO- http://127.0.0.1:3001/api/auth/me > /dev/null || exit 1
 
-CMD ["npx", "tsx", "server/index.ts"]
+CMD ["tsx", "server/index.ts"]
