@@ -17,6 +17,7 @@ import { PROXIMITY_RADIUS_KM } from '../../shared/types';
 import type { TestCityPin } from '../../shared/types';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
+import { BrandLogo } from '../brand/BrandLogo';
 
 export function LocationGate() {
   const { user, activateUserLocation, logoutUser } = useAuth();
@@ -85,21 +86,10 @@ export function LocationGate() {
     <div className="min-h-screen w-full overflow-x-hidden flex flex-col">
       {/* Top Bar */}
       <header className="w-full max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-2 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2.5 min-w-0">
-          <div className="h-9 w-9 shrink-0 rounded-xl bg-gradient-to-br from-amber-400 via-rose-500 to-cyan-400 p-[2px]">
-            <div className="h-full w-full rounded-[9px] bg-[var(--bg-primary)] flex items-center justify-center">
-              <span className="font-display font-extrabold text-xs gradient-text">47</span>
-            </div>
-          </div>
-          <div className="min-w-0">
-            <div className="font-display font-bold text-base text-theme-primary leading-tight truncate">
-              47 Cities
-            </div>
-            <div className="text-[11px] text-theme-muted truncate">
-              Signed in as <span className="font-semibold text-theme-secondary">{user?.nickname}</span>
-            </div>
-          </div>
-        </div>
+        <BrandLogo
+          size="md"
+          subtitleExtra={user?.nickname ? `Signed in as ${user.nickname}` : null}
+        />
 
         <div className="flex items-center gap-2 shrink-0">
           <button

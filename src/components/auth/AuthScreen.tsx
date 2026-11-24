@@ -43,6 +43,7 @@ import {
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
 import { DevInboxModal } from './DevInboxModal';
+import { BrandLogo } from '../brand/BrandLogo';
 
 type AuthMode = 'login' | 'register' | 'verify' | 'reset';
 
@@ -296,21 +297,7 @@ export function AuthScreen() {
     <div className="min-h-screen w-full overflow-x-hidden flex flex-col">
       {/* Top minimal bar */}
       <header className="w-full max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-2 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2.5">
-          <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-amber-400 via-rose-500 to-cyan-400 p-[2px] shadow-lg">
-            <div className="h-full w-full rounded-[10px] bg-[var(--bg-primary)] flex items-center justify-center">
-              <span className="font-display font-extrabold text-sm gradient-text">47</span>
-            </div>
-          </div>
-          <div>
-            <div className="font-display text-lg font-bold tracking-tight text-theme-primary leading-none">
-              47 Cities
-            </div>
-            <div className="text-[11px] text-theme-muted font-medium">
-              Kenya 10 km Proximity Hub
-            </div>
-          </div>
-        </div>
+        <BrandLogo size="lg" />
 
         <button
           type="button"

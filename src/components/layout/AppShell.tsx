@@ -15,6 +15,7 @@ import {
 import { MAX_SIMULTANEOUS_CHATS, PROXIMITY_RADIUS_KM } from '../../shared/types';
 import { useAuth } from '../../context/AuthContext';
 import { useTheme } from '../../context/ThemeContext';
+import { BrandLogo } from '../brand/BrandLogo';
 
 export type AppTab = 'blackboard' | 'radar' | 'ai' | 'chats' | 'profile';
 
@@ -96,21 +97,9 @@ export function AppShell({
           <button
             type="button"
             onClick={() => onSelectTab('blackboard')}
-            className="flex items-center gap-2 min-w-0 cursor-pointer"
+            className="flex items-center min-w-0 cursor-pointer"
           >
-            <div className="h-8 w-8 shrink-0 rounded-lg bg-gradient-to-br from-amber-400 via-rose-500 to-cyan-400 p-[1.5px]">
-              <div className="h-full w-full rounded-[6.5px] bg-[var(--bg-primary)] flex items-center justify-center">
-                <span className="font-display font-extrabold text-[11px] gradient-text">47</span>
-              </div>
-            </div>
-            <div className="text-left min-w-0">
-              <div className="font-display text-sm font-bold text-theme-primary leading-tight truncate">
-                47 Cities
-              </div>
-              <div className="text-[10px] text-emerald-400 font-semibold truncate">
-                {user?.activeCityLabel || '10 km Zone Active'}
-              </div>
-            </div>
+            <BrandLogo size="sm" />
           </button>
 
           <div className="flex items-center gap-1.5 shrink-0">
@@ -161,20 +150,8 @@ export function AppShell({
         {/* LEFT STICKY NAVIGATION RAIL (PC >= 1024px) */}
         <aside className="hidden lg:flex w-60 shrink-0 sticky top-5 flex-col gap-4 max-h-[calc(100vh-2.5rem)] overflow-y-auto no-scrollbar">
           {/* Brand Header */}
-          <div className="glass-card p-4 flex items-center gap-3">
-            <div className="h-10 w-10 shrink-0 rounded-xl bg-gradient-to-br from-amber-400 via-rose-500 to-cyan-400 p-[2px] shadow-md">
-              <div className="h-full w-full rounded-[10px] bg-[var(--bg-primary)] flex items-center justify-center">
-                <span className="font-display font-extrabold text-sm gradient-text">47</span>
-              </div>
-            </div>
-            <div className="min-w-0">
-              <h1 className="font-display text-lg font-extrabold text-theme-primary leading-tight truncate">
-                47 Cities
-              </h1>
-              <p className="text-[11px] text-theme-muted truncate">
-                Kenya 10 km Social Hub
-              </p>
-            </div>
+          <div className="glass-card p-3.5">
+            <BrandLogo size="md" />
           </div>
 
           {/* Primary Nav */}
